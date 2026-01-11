@@ -13,3 +13,11 @@ output "security_group_id" {
 output "ec2_public_ip" {
   value = aws_instance.web.public_ip
 }
+
+output "ec2_public_ip" {
+  value = aws_instance.web.public_ip
+}
+
+output "ec2_public_ip" {
+  value = aws_instance.web.public_ip
+}
