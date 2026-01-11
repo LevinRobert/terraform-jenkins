@@ -77,35 +77,16 @@ resource "aws_security_group" "web_sg" {
 }
 
 # Launch EC2 instance in the same subnet & VPC
+# Launch multiple EC2 instances
 resource "aws_instance" "web" {
-  ami                    = "ami-0f5ee92e2d63afc18"  # Amazon Linux 2 in ap-south-1
-  instance_type          = "t2.micro"
+  count                  = 3
+  ami                    = "ami-0f5ee92e2d63afc18"  # Amazon Linux 2 (ap-south-1)
+  instance_type          = "t2.medium"
   subnet_id              = aws_subnet.my_subnet.id
   vpc_security_group_ids = [aws_security_group.web_sg.id]
 
   tags = {
-    Name = "terraform-ec2"
+    Name = "ansible-${count.index}"
   }
 }
 
-resource "aws_instance" "web" {
-  ami                    = "ami-0f5ee92e2d63afc18"  # Amazon Linux 2 in ap-south-1
-  instance_type          = "t2.micro"
-  subnet_id              = aws_subnet.my_subnet.id
-  vpc_security_group_ids = [aws_security_group.web_sg.id]
-
-  tags = {
-    Name = "ansible"
-  }
-}
-
-resource "aws_instance" "web" {
-  ami                    = "ami-0f5ee92e2d63afc18"  # Amazon Linux 2 in ap-south-1
-  instance_type          = "t2.micro"
-  subnet_id              = aws_subnet.my_subnet.id
-  vpc_security_group_ids = [aws_security_group.web_sg.id]
-
-  tags = {
-    Name = "ansible"
-  }
-}
