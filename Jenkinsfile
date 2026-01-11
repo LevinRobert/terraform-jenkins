@@ -12,7 +12,7 @@ pipeline {
             steps {
                 withCredentials([[
                     $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'aws-creds'
+                    credentialsId: 'aws-secret'
                 ]]) {
                     sh '''
                       terraform init
@@ -25,7 +25,7 @@ pipeline {
             steps {
                 withCredentials([[
                     $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'aws-creds'
+                    credentialsId: 'aws-secret'
                 ]]) {
                     sh '''
                       terraform plan
@@ -38,7 +38,7 @@ pipeline {
             steps {
                 withCredentials([[
                     $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'aws-creds'
+                    credentialsId: 'aws-secret'
                 ]]) {
                     sh '''
                       terraform apply -auto-approve
