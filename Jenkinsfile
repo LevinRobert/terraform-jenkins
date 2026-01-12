@@ -38,7 +38,7 @@ pipeline {
                     $class: 'AmazonWebServicesCredentialsBinding',
                     credentialsId: 'aws-secret'
                 ]]) {
-                    sh 'terraform plan -auto-approve'
+                    sh 'terraform apply -auto-approve'
                     
                 }
             }
