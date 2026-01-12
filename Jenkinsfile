@@ -14,9 +14,8 @@ pipeline {
                     $class: 'AmazonWebServicesCredentialsBinding',
                     credentialsId: 'aws-secret'
                 ]]) {
-                    sh '''
-                      terraform init
-                    '''
+                    sh "terraform init"
+                    
                 }
             }
         }
@@ -27,9 +26,8 @@ pipeline {
                     $class: 'AmazonWebServicesCredentialsBinding',
                     credentialsId: 'aws-secret'
                 ]]) {
-                    sh '''
-                      terraform plan
-                    '''
+                    sh "terraform plan"         
+                    
                 }
             }
         }
@@ -40,9 +38,8 @@ pipeline {
                     $class: 'AmazonWebServicesCredentialsBinding',
                     credentialsId: 'aws-secret'
                 ]]) {
-                    sh '''
-                      terraform apply -auto-approve
-                    '''
+                    sh "terraform plan -auto-approve"
+                    
                 }
             }
         }
