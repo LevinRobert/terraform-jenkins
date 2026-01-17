@@ -14,8 +14,7 @@ pipeline {
                     $class: 'AmazonWebServicesCredentialsBinding',
                     credentialsId: 'aws-secret'
                 ]]) {
-                    sh 'terraform init -migrate-state -input=false
-'
+                    sh 'terraform init -migrate-state -input=false'
                     
                 }
             }
@@ -27,7 +26,7 @@ pipeline {
                     $class: 'AmazonWebServicesCredentialsBinding',
                     credentialsId: 'aws-secret'
                 ]]) {
-                    sh 'terraform plan'         
+                    sh 'terraform plan'
                     
                 }
             }
