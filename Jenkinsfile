@@ -14,7 +14,7 @@ pipeline {
                     $class: 'AmazonWebServicesCredentialsBinding',
                     credentialsId: 'aws-secret'
                 ]]) {
-                    sh 'terraform init -reconfigure'
+                    sh 'terraform init -migrate-state -input=false'
                     
                 }
             }
